@@ -39,15 +39,20 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.boxHtml = new System.Windows.Forms.RichTextBox();
+            this.messageBox = new System.Windows.Forms.Label();
             this.doAnalyze = new System.Windows.Forms.Button();
             this.boxFilter = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.boxUrl = new System.Windows.Forms.TextBox();
-            this.boxHtml = new System.Windows.Forms.RichTextBox();
+            this.bwAnalyze = new System.ComponentModel.BackgroundWorker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.indexOfBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -130,6 +135,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.indexOfBtn);
             this.tabPage1.Controls.Add(this.richTextBox1);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.button1);
@@ -146,18 +152,36 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.boxHtml);
+            this.tabPage2.Controls.Add(this.messageBox);
             this.tabPage2.Controls.Add(this.doAnalyze);
             this.tabPage2.Controls.Add(this.boxFilter);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.boxUrl);
-            this.tabPage2.Controls.Add(this.boxHtml);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(774, 441);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "区域代码";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // boxHtml
+            // 
+            this.boxHtml.Location = new System.Drawing.Point(387, 90);
+            this.boxHtml.Name = "boxHtml";
+            this.boxHtml.Size = new System.Drawing.Size(376, 315);
+            this.boxHtml.TabIndex = 0;
+            this.boxHtml.Text = "";
+            // 
+            // messageBox
+            // 
+            this.messageBox.AutoSize = true;
+            this.messageBox.Location = new System.Drawing.Point(383, 416);
+            this.messageBox.Name = "messageBox";
+            this.messageBox.Size = new System.Drawing.Size(0, 12);
+            this.messageBox.TabIndex = 6;
             // 
             // doAnalyze
             // 
@@ -203,13 +227,30 @@
             this.boxUrl.TabIndex = 1;
             this.boxUrl.Text = "index.html";
             // 
-            // boxHtml
+            // bwAnalyze
             // 
-            this.boxHtml.Location = new System.Drawing.Point(3, 3);
-            this.boxHtml.Name = "boxHtml";
-            this.boxHtml.Size = new System.Drawing.Size(373, 435);
-            this.boxHtml.TabIndex = 0;
-            this.boxHtml.Text = "";
+            this.bwAnalyze.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAnalyze_DoWork);
+            this.bwAnalyze.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bwAnalyze_ProgressChanged);
+            this.bwAnalyze.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwAnalyze_RunWorkerCompleted);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(376, 441);
+            this.dataGridView1.TabIndex = 7;
+            // 
+            // indexOfBtn
+            // 
+            this.indexOfBtn.Location = new System.Drawing.Point(341, 389);
+            this.indexOfBtn.Name = "indexOfBtn";
+            this.indexOfBtn.Size = new System.Drawing.Size(75, 23);
+            this.indexOfBtn.TabIndex = 7;
+            this.indexOfBtn.Text = "测试";
+            this.indexOfBtn.UseVisualStyleBackColor = true;
+            this.indexOfBtn.Click += new System.EventHandler(this.indexOfBtn_Click);
             // 
             // DeepDarkFantasy
             // 
@@ -225,6 +266,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -247,6 +289,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox boxUrl;
         private System.Windows.Forms.RichTextBox boxHtml;
+        private System.ComponentModel.BackgroundWorker bwAnalyze;
+        private System.Windows.Forms.Label messageBox;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button indexOfBtn;
     }
 }
 
